@@ -60,4 +60,11 @@ Commit 到本地GIT
 
 再登录到GitHub可以看见"Switch Branches"下的分支选项：
 
-
+首先是关于git remote add xxx xxx这个用法。这个做法是取别名，避免了每次都要输入完整的路径名，当然，你也可以这么做，当然没问题。
+比如：git pull url master，就是把远程的url这个拉取到本机的master分支上。
+可是每次都这么做多麻烦，为此使用别名，以后就直接通过别名来push，pull。
+实际上，昨晚这个工作后，会在.git目录下面的config文件中写入一个项，用来指示该别名的信息,如下所示：
+[remote "origin"]
+url = git@github.com:xxx/rep.git
+fetch = +refs/heads/*:refs/remotes/origin/*
+上面就是别名origin这个别名的信息。记录了目标远程版本库的地址
